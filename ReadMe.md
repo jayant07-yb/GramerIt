@@ -12,37 +12,36 @@ This project is a clone of the popular grammar and spell-checking tool, Gramerly
 ## Technologies Used
 
 - Programming Language: Python
-- Framework: [Framework]
-- Libraries: [Libraries]
-- Database: [Database]
-- Deployment: [Deployment Platform]
+- Libraries: Numpy, Tensorflow, Logging, CLI
 
 ## Installation
 
 1. Clone the repository: `git clone [repository URL]`
-2. Install dependencies: `npm install`
-3. Start the application: `npm start`
+2. Install dependencies: `pip install -r requirements.txt`
+3. Load the model into the weight folder
+    ```
+    cd weights
+    wget 'https://storage.cloud.google.com/jayant07-ml-weights/output/bigramprobab2.json'   # For basic probability model
+
+    ```
 
 ## Usage
 
-1. Open the application in your web browser.
-2. Enter or paste the text you want to check.
-3. Click the "Check" button to get grammar and spelling suggestions.
-4. Customize the settings as per your preference.
-5. Save or export the corrected text.
+1. Check the quality of text
+    `python src/main.py --help`
+
 
 ## Contributing
 
 Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
 
-## License
-
-This project is licensed under the [License Name] - [License URL].
-
 ## Contact
 
-For any questions or inquiries, please contact [Your Name] at [Your Email Address].
+For any questions or inquiries, please contact Jayant Aanand at jayantanand2001@gmail.com .
 
 
 ### Contribute
 1. Directory structure
+```
+```
+2. 
