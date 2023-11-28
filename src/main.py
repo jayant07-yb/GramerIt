@@ -14,6 +14,7 @@ class Gramerly():
     def __init__ (self, model_path='weights/'):
         self.model_folder_path = model_path
         self.load_model()
+        self.report = []
 
     def load_model(self):
         pass
@@ -23,6 +24,9 @@ class Gramerly():
         if len(filtered_words) < 2:
             logging.error('Text is too short')
             sys.exit(1)
+
+        probab = self.sentence_prob(filtered_words)
+
 
         return self.sentence_prob(filtered_words)
         
@@ -65,10 +69,19 @@ class Gramerly():
 class GramerlyLinearRegression(Gramerly):
     def __init__ (self, model_path='weights/'):
         super().__init__(model_path)
-        self.model = None
-
+        self.vectorizer = GloveVectorizer()
+        self.load_model()
+        
     def load_model(self):
-        self.bigram_probab = json.load(open(os.path.join(self.model_folder_path, 'bigramprobab2.json')))
+        self.weights = np.load(os.path.join(self.model_folder_path, 'linear_regression_weights.txt.npy'))
+        self.bias = np.load(os.path.join(self.model_folder_path, 'linear_regression_bias.txt.npy'))
+
+    def predict_a_b(self, a, b):
+        a = self.vectorizer.transform_word(a)
+        b = self.vectorizer.transform_word(b)
+        logging.debug('a: {}, b: {}'.format(a, b))
+        X = np.concatenate([a, b])
+        return X.dot(self.weights) + self.bias
 
 class GramerlyDeepLearning(Gramerly):
     def __init__ (self, model_path='weights/'):
