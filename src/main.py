@@ -114,7 +114,7 @@ class GramerlyDeepLearning(Gramerly):
         logging.debug('a: {}, b: {}'.format(a, b))
         combined_embedding = np.concatenate([a, b])
 
-        return self.model.predict(combined_embedding.reshape(1, -1))
+        return self.model.predict(combined_embedding.reshape(1, -1), verbose=0)
     
 class GramerltBaiscMarkovChain(Gramerly):
     def __init__ (self, model_path='weights/'):
