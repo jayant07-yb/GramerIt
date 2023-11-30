@@ -21,7 +21,7 @@ class BaseGramerIt():
         filtered_words = self.process_sentence(text)
         if len(filtered_words) < 2:
             logging.error('Text is too short')
-            sys.exit(1)
+            return 0
 
         probab = self.sentence_prob(filtered_words)
 

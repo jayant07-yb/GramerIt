@@ -14,4 +14,6 @@ class GloveVectorizer():
         self.embedding_dim = len(vector)
     
     def transform_word(self, word):
+        if word not in self.embeddings_dict.keys():
+            return np.zeros(self.embedding_dim)
         return self.embeddings_dict[word]
